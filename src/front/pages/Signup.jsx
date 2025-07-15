@@ -1,24 +1,32 @@
 import React, { useState } from "react";
+import { collection } from "../services/collection";
 
 export const Signup = () => {
 
-const object = []
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    object.push(email)
-    object.push(password)
-
   const handleChange = (e) => {
 
-    object.email = setEmail(e.target.value)
-    object.password = setPassword(e.target.value)
+        const {name, value} = e.target;
+
+        if(name === "email"){
+            setEmail(value)
+        }else if(name === "password"){
+            setPassword(value)
+        }
 
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+           const user_data = {
+                email,
+                password
+            };
 
+            const result = await collection.sendSignup(user_data);
+            console.log("Resultado:", result);
 
     }
 
@@ -44,8 +52,8 @@ const object = []
                     <div className="corto"></div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <input type="email" onChange={handleChange} className="inputs form-control p-2 mx-3" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter your email"/>
-                    <input type="password" onChange={handleChange} className="inputs form-control p-2 mx-3" id="exampleInputPassword1" aria-describedby="emailHelp" name="password" placeholder="Enter your password"/>
+                    <input type="email" onChange={handleChange} value={email} name="email" className="inputs form-control p-2 mx-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email"/>
+                    <input type="password" onChange={handleChange} value={password} name="password" className="inputs form-control p-2 mx-3" id="exampleInputPassword1" aria-describedby="emailHelp" placeholder="Enter your password"/>
                 </div>
                 <div className="d-flex justify-content-center mt-4">
                     <button className="btn btn-primary p-2">Registrarse</button>

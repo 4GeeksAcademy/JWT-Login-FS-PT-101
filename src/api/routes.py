@@ -37,10 +37,12 @@ def register():
         email = request.json.get("email")
         password = request.json.get("password")
 
+
         if not email or not password:
             return jsonify({"error": "Fields username/password are empty"}), 400
         
         encrypted_password = generate_password_hash(password)
+
 
         user = User(email=email, password=encrypted_password)
         db.session.add(user)
