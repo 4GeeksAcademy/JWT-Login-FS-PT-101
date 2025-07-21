@@ -90,6 +90,9 @@ export const Login = () => {
                 <div className="d-flex justify-content-center mt-4">
                     <button className="btn btn-success p-2" disabled={!isLogged} onClick={() => navigate("/private")}>Go to private</button>
                 </div>
+                <div className="d-flex justify-content-center mt-4">
+                    <button className="btn btn-danger p-2" onClick={() => navigate("/signup")}>Go to signup</button>
+                </div>
             
         </div>
 
