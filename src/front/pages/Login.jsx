@@ -80,8 +80,8 @@ export const Login = () => {
                     <div className="corto"></div>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <input type="email" className="inputs form-control p-2 mx-3" onChange={handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter your email"/>
-                    <input type="password" className="inputs form-control p-2 mx-3" onChange={handleChange} id="exampleInputPassword1" aria-describedby="passwordHelp" name="password" placeholder="Enter your password"/>
+                    <input type="email" className="inputs form-control p-2 mx-3" onChange={handleChange} id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter your email" value={email}/>
+                    <input type="password" className="inputs form-control p-2 mx-3" onChange={handleChange} id="exampleInputPassword1" aria-describedby="passwordHelp" name="password" placeholder="Enter your password" value={password}/>
                 </div>
                 <div className="d-flex justify-content-center mt-4">
                     <button className="btn btn-primary p-2">Log In</button>
