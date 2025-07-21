@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { collection } from "../services/collection";
 
 export const Signup = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    let navigate = useNavigate();
+
+    function resetForm(){
+        setEmail("")
+        setPassword("")
+    }
 
   const handleChange = (e) => {
 
@@ -26,7 +34,14 @@ export const Signup = () => {
             };
 
             const result = await collection.sendSignup(user_data);
-            console.log("Resultado:", result);
+
+          if (result.success) {
+            alert("Usuario agregado al sistema. Acepta para continuar e iniciar sesión")
+            navigate("/login")
+        } else {
+        resetForm()
+            alert("El usuario no pudo ser registrado. Vuelve a intentarlo")
+        }
 
     }
 
@@ -35,6 +50,9 @@ export const Signup = () => {
         <div className="cartita card p-3 my-5 bg-danger mx-auto">
 
             <h1 className="text-center p-2">Formulario para registrarse</h1>
+          
+
+          
 
             <form onSubmit={handleSubmit}>
                 <div className="d-flex mt-3">

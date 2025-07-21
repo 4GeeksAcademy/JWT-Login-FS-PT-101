@@ -1,5 +1,14 @@
+import { useNavigate } from "react-router";
+
 export const Private = () => {
- 
+    const navigate = useNavigate();
+    
+
+
+    const closeSession = async () => {
+        localStorage.removeItem("token");
+        navigate("/login")
+    }
     
     return(
 
@@ -10,7 +19,7 @@ export const Private = () => {
             <p className="text-center p-2">¡Sesión iniciada!</p>
 
                 <div className="d-flex justify-content-center mt-4">
-                    <button className="btn btn-danger p-2">Cerrar sesión</button>
+                    <button className="btn btn-danger p-2" onClick={closeSession}>Cerrar sesión</button>
                 </div>
             
         </div>
